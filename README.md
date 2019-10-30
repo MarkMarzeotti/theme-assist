@@ -5,3 +5,5 @@ A simple plugin to remove some of the unneccessary features that WordPress inclu
 ## Installing this plugin will remove:
 
 * Emoji Support
+* Comment RSS Feeds
+* WP Block Library stylesheet
