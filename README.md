@@ -13,4 +13,5 @@ A simple plugin to remove some of the unneccessary features that WordPress inclu
 ### Add
 
 * Two additional image sizes for Facebook and Twitter share images
-* Assign those sizes as the default if Yoast is installed
+    * Assign those sizes as the default if Yoast is installed
+* Allow SVGs in Media Library uploads
