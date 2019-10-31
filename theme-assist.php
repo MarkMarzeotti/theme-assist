@@ -1,6 +1,6 @@
 <?php
 /**
- * A WordPress plugin that removes all the unnecessary extras WordPress includes by default.
+ * A collection of functions I used to include in my base theme but wanted the ability to add/edit/remove easily without forcing the use of a child theme.
  *
  * @link              https://markmarzeotti.com
  * @since             1.0.0
@@ -9,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name:       Theme Assist
  * Plugin URI:        https://markmarzeotti.com
- * Description:       A WordPress plugin that removes all the unnecessary extras WordPress includes by default.
+ * Description:       A WordPress plugin that removes all the unnecessary extras WordPress includes by default and adds some useful features.
  * Version:           1.0.0
  * Author:            Mark Marzeotti
  * Author URI:        https://markmarzeotti.com
@@ -30,53 +30,11 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'THEME_ASSIST_VERSION', '1.0.0' );
 
 /**
- * Remove emoji styles.
+ * Functions that remove default WP features, functionality, or assets.
  */
-remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-remove_action( 'wp_print_styles', 'print_emoji_styles' );
-remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-remove_action( 'admin_print_styles', 'print_emoji_styles' );
+require dirname( __FILE__ ) . '/remove.php';
 
 /**
- * Disable comment feeds.
+ * Functions that add new useful functionality.
  */
-function ta_disable_comments_feed() {
-	/* translators: %s: homepage url */
-	wp_die( sprintf( __( 'No feed available, please visit the <a href="%s">homepage</a>!', 'marzeotti-base' ), esc_url( home_url( '/' ) ) ) ); // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
-}
-add_action( 'do_feed_rss2_comments', 'ta_disable_comments_feed', 1 );
-add_action( 'do_feed_atom_comments', 'ta_disable_comments_feed', 1 );
-add_filter( 'feed_links_show_comments_feed', '__return_false' );
-
-/**
- * Dequeue block editor base styles.
- */
-function ta_dequeue_styles() {
-	wp_dequeue_style( 'wp-block-library' );
-}
-add_action( 'wp_print_styles', 'ta_dequeue_styles', 100 );
-
-/**
- * Add yoast share image sizes.
- */
-function ta_add_yoast_image_sizes() {
-	add_image_size( 'share-facebook', 1200, 630, true );
-	add_image_size( 'share-twitter', 1024, 512, true );
-}
-add_action( 'after_setup_theme', 'ta_add_yoast_image_sizes' );
-
-/**
- * Sets image size for Yoast to use for Facebook shares.
- */
-function ta_set_yoast_facebook_share_image_size() {
-	return 'share-facebook';
-}
-add_filter( 'wpseo_opengraph_image_size', 'ta_set_yoast_facebook_share_image_size' );
-
-/**
- * Sets image size for Yoast to use for Twitter shares.
- */
-function ta_set_yoast_twitter_share_image_size() {
-	return 'share-twitter';
-}
-add_filter( 'wpseo_twitter_image_size', 'ta_set_yoast_twitter_share_image_size' );
+require dirname( __FILE__ ) . '/add.php';
