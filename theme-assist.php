@@ -2,13 +2,13 @@
 /**
  * A collection of functions I used to include in my base theme but wanted the ability to add/edit/remove easily without forcing the use of a child theme.
  *
- * @link              https://markmarzeotti.com
+ * @link              https://github.com/MarkMarzeotti/theme-assist
  * @since             1.0.0
  * @package           Theme_Assist
  *
  * @wordpress-plugin
  * Plugin Name:       Theme Assist
- * Plugin URI:        https://markmarzeotti.com
+ * Plugin URI:        https://github.com/MarkMarzeotti/theme-assist
  * Description:       A WordPress plugin that removes all the unnecessary extras WordPress includes by default and adds some useful features.
  * Version:           1.0.0
  * Author:            Mark Marzeotti
